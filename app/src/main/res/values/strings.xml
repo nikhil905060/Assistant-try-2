@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Astute AI</string>
+    <string name="accessibility_service_description">Astute AI automates voice actions and device controls. This service allows the app to perform gestures, read screen content, and control apps via voice commands.</string>
+    
+    <!-- UI Strings -->
+    <string name="overlay_title">How can Astute AI help?</string>
+    <string name="tap_to_speak">Tap to speak</string>
+    <string name="listening">Listening...</string>
+    <string name="processing">Processing...</string>
+    <string name="retry">Retry</string>
+    
+    <!-- Permission Strings -->
+    <string name="permission_rationale_audio">Astute AI needs microphone access to understand your voice commands.</string>
+    <string name="permission_rationale_overlay">Astute AI needs display over other apps permission to show the assistant overlay.</string>
+    <string name="permission_granted">Permission granted!</string>
+    <string name="permission_denied">Permission denied. Please enable manually in settings.</string>
+    
+    <!-- Activity Strings -->
+    <string name="activity_opening">Opening %1$s...</string>
+    <string name="activity_error">An error occurred. Please try again.</string>
+    
+    <!-- Accessibility Strings -->
+    <string name="accessibility_request_title">Enable Accessibility Service</string>
+    <string name="accessibility_request_body">To automate device actions, please enable Astute AI in Accessibility settings.</string>
+    <string name="accessibility_enabled">Accessibility service enabled!</string>
+    
+    <!-- Assistant Settings -->
+    <string name="assistant_settings_title">Set Default Digital Assistant</string>
+    <string name="assistant_settings_body">To use Astute AI as your default assistant, please select it in Assistant &amp; voice input settings.</string>
+</resources>
