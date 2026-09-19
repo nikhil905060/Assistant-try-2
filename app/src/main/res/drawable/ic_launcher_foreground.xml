@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Outer Glow Ring -->
+    <path
+        android:pathData="M54,54m-48,0a48,48 0,1 1,96 0a48,48 0,1 1,-96 0"
+        android:strokeWidth="4"
+        android:strokeColor="#7B1FA2"
+        android:fillColor="#00000000"/>
+    
+    <!-- Inner Orb -->
+    <path
+        android:pathData="M54,54m-30,0a30,30 0,1 1,60 0a30,30 0,1 1,-60 0"
+        android:fillColor="#BA68C8"/>
+    
+    <!-- Center Pulse -->
+    <path
+        android:pathData="M54,54m-12,0a12,12 0,1 1,24 0a12,12 0,1 1,-24 0"
+        android:fillColor="#FFFFFF"/>
+    
+    <!-- Neural Network Nodes (Decorative) -->
+    <circle
+        android:cx="35"
+        android:cy="35"
+        android:r="3"
+        android:fillColor="#E1BEE7"/>
+    <circle
+        android:cx="73"
+        android:cy="35"
+        android:r="3"
+        android:fillColor="#E1BEE7"/>
+    <circle
+        android:cx="35"
+        android:cy="73"
+        android:r="3"
+        android:fillColor="#E1BEE7"/>
+    <circle
+        android:cx="73"
+        android:cy="73"
+        android:r="3"
+        android:fillColor="#E1BEE7"/>
+    <circle
+        android:cx="54"
+        android:cy="22"
+        android:r="3"
+        android:fillColor="#E1BEE7"/>
+    <circle
+        android:cx="54"
+        android:cy="86"
+        android:r="3"
+        android:fillColor="#E1BEE7"/>
+    <circle
+        android:cx="22"
+        android:cy="54"
+        android:r="3"
+        android:fillColor="#E1BEE7"/>
+    <circle
+        android:cx="86"
+        android:cy="54"
+        android:r="3"
+        android:fillColor="#E1BEE7"/>
+</vector>
