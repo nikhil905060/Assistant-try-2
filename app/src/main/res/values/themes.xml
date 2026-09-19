@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.AstuteAI" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#7B1FA2</item>
+        <item name="colorPrimaryVariant">#4A148C</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#BA68C8</item>
+        <item name="colorSecondaryVariant">#E1BEE7</item>
+        <item name="colorOnSecondary">#000000</item>
+        <item name="android:colorBackground">#120024</item>
+        <item name="colorSurface">#1E0033</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowSplashScreenBackground">#120024</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    
+    <style name="Theme.AstuteAI.Transparent" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+</resources>
