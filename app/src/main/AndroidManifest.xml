@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Core Permissions -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    
+    <!-- Assistant & Voice Permissions -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.BIND_VOICE_INTERACTION" 
+        tools:ignore="ProtectedPermissions" />
+    
+    <!-- Accessibility Permission (requires user grant) -->
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"
+        tools:ignore="ProtectedPermissions" />
+
+    <application
+        android:name=".AstuteApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AstuteAI"
+        android:largeHeap="true"
+        android:enableOnBackInvokedCallback="true"
+        tools:targetApi="34"
+        tools:replace="android:icon">
+
+        <!-- Main Launcher Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="standard"
+            android:taskAffinity="com.astute.ai"
+            android:theme="@style/Theme.AstuteAI"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Floating Overlay Activity -->
+        <activity
+            android:name=".ui.AssistantOverlayActivity"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:keepScreenOn="true"
+            android:screenOrientation="portrait"
+            android:resizeableActivity="true"
+            android:autoRemoveFromRecents="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.ASSIST" />
+                <action android:name="android.intent.action.VOICE_COMMAND" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Voice Interaction Service (Main entry point for Android Assistant framework) -->
+        <service
+            android:name=".service.AstuteVoiceInteractionService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_VOICE_INTERACTION">
+            <intent-filter>
+                <action android:name="android.service.voice.VoiceInteractionService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.voice_interaction_service"
+                android:resource="@xml/voice_interaction_service" />
+        </service>
+
+        <!-- Session Service (Handles voice sessions) -->
+        <service
+            android:name=".service.AstuteVoiceInteractionSessionService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_VOICE_INTERACTION">
+            <intent-filter>
+                <action android:name="android.service.voice.VoiceInteractionSessionService" />
+            </intent-filter>
+        </service>
+
+        <!-- Recognition Service (Required for OEM assistant picker - ColorOS, Realme UI, MIUI) -->
+        <service
+            android:name=".service.AstuteRecognitionService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_RECOGNITION_SERVICE">
+            <intent-filter>
+                <action android:name="android.speech.RecognitionService" />
+            </intent-filter>
+        </service>
+
+        <!-- Device Automation / Accessibility Service -->
+        <service
+            android:name=".service.DeviceAutomationService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+    </application>
+
+    <!-- Package queries for OEM compatibility (Android 11+) -->
+    <queries>
+        <!-- Speech Recognition Services -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+        
+        <!-- Text-to-Speech Services -->
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+        
+        <!-- Resolve Activities for common actions -->
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+        </intent>
+        
+        <!-- Package visibility for common apps -->
+        <package android:name="com.google.android.youtube" />
+        <package android:name="com.android.settings" />
+        <package android:name="com.google.android.apps.maps" />
+        <package android:name="com.whatsapp" />
+    </queries>
+
+</manifest>
